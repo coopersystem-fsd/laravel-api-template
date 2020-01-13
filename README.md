@@ -17,7 +17,7 @@ Template base para construção de APIs.
 
 ## Ambiente
 
-Existem alguma variáveis de ambiente que podem ser definidas:
+Existem algumas variáveis de ambiente que podem ser definidas:
 
 ```
 DOCKER_UID=1000
