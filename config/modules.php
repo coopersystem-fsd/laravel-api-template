@@ -57,7 +57,7 @@ return [
                 'PROVIDER_NAMESPACE',
             ],
         ],
-        'gitkeep' => true,
+        'gitkeep' => false,
     ],
     'paths' => [
         /*
@@ -101,22 +101,22 @@ return [
         */
         'generator' => [
             'config' => ['path' => 'Config', 'generate' => true],
-            'command' => ['path' => 'Console', 'generate' => true],
+            'command' => ['path' => 'Console', 'generate' => false],
             'migration' => ['path' => 'Database/Migrations', 'generate' => true],
-            'seeder' => ['path' => 'Database/Seeders', 'generate' => true],
-            'factory' => ['path' => 'Database/factories', 'generate' => true],
+            'seeder' => ['path' => 'Database/Seeders', 'generate' => false],
+            'factory' => ['path' => 'Database/factories', 'generate' => false],
             'model' => ['path' => 'Entities', 'generate' => true],
             'routes' => ['path' => 'Routes', 'generate' => true],
             'controller' => ['path' => 'Http/Controllers', 'generate' => true],
-            'filter' => ['path' => 'Http/Middleware', 'generate' => true],
-            'request' => ['path' => 'Http/Requests', 'generate' => true],
+            'filter' => ['path' => 'Http/Middleware', 'generate' => false],
+            'request' => ['path' => 'Http/Requests', 'generate' => false],
             'provider' => ['path' => 'Providers', 'generate' => true],
-            'assets' => ['path' => 'Resources/assets', 'generate' => true],
-            'lang' => ['path' => 'Resources/lang', 'generate' => true],
-            'views' => ['path' => 'Resources/views', 'generate' => true],
+            'assets' => ['path' => 'Resources/assets', 'generate' => false],
+            'lang' => ['path' => 'Resources/lang', 'generate' => false],
+            'views' => ['path' => 'Resources/views', 'generate' => false],
             'test' => ['path' => 'Tests/Unit', 'generate' => true],
             'test-feature' => ['path' => 'Tests/Feature', 'generate' => true],
-            'repository' => ['path' => 'Repositories', 'generate' => false],
+            'repository' => ['path' => 'Repositories', 'generate' => true],
             'event' => ['path' => 'Events', 'generate' => false],
             'listener' => ['path' => 'Listeners', 'generate' => false],
             'policies' => ['path' => 'Policies', 'generate' => false],
@@ -153,10 +153,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'coopersystem-fsd',
         'author' => [
-            'name' => 'Nicolas Widart',
-            'email' => 'n.widart@gmail.com',
+            'name' => 'Coopersystem Team',
+            'email' => 'detin.fsd@coopersystem.com.br',
         ],
     ],
     /*
