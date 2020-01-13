@@ -1,0 +1,41 @@
+version: '3'
+services:
+    laravelapi:
+        build: .
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - laravelapi-postgres
+            - laravelapi-redis
+        ports:
+            - "9000"
+
+    laravelapi-postgres:
+        image: postgres:12-alpine
+        restart: always
+        ports:
+            - "5432"
+        volumes:
+            - "./.docker/postgres/data:/var/lib/postgresql/data"
+        environment:
+            - POSTGRES_DB=laravel
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+
+    laravelapi-redis:
+        image: redis:alpine
+        volumes:
+            - ./.docker/redis:/data
+        expose:
+            - 6379
+
+    laravelapi-nginx:
+        build: ./.docker/nginx
+        restart: always
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www
+            - ./.docker/log/nginx:/var/log/nginx
+        depends_on:
+            - laravelapi
