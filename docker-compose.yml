@@ -1,7 +1,11 @@
 version: '3'
 services:
     laravelapi:
-        build: .
+        build:
+          context: .
+          args:
+            - UID=${DOCKER_UID}
+            - GID=${DOCKER_GID}
         volumes:
             - ./:/var/www
         depends_on:

@@ -9,8 +9,10 @@ RUN chown -R www-data:www-data /var/www
 
 # Add a non-root user to prevent files being created with root permissions on host machine.
 ENV USER=laravel
-ENV UID=1000
-ENV GID=1000
+ARG UID=1000
+ENV UID ${UID}
+ARG GID=1000
+ENV GID ${GID}
 
 RUN addgroup --gid "$GID" "$USER" \
     && adduser \
