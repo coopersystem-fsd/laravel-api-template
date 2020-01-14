@@ -6,19 +6,21 @@ services:
           args:
             - UID=${DOCKER_UID}
             - GID=${DOCKER_GID}
+        user: ${DOCKER_UID}
         volumes:
             - ./:/var/www
         depends_on:
             - laravelapi-postgres
             - laravelapi-redis
         ports:
-            - "9000"
+            - 9000:9000
 
     laravelapi-postgres:
         image: postgres:12-alpine
+        user: ${DOCKER_UID}
         restart: always
         ports:
-            - "5432"
+            - 5432:5432
         volumes:
             - "./.docker/postgres/data:/var/lib/postgresql/data"
         environment:
@@ -28,16 +30,18 @@ services:
 
     laravelapi-redis:
         image: redis:alpine
+        user: ${DOCKER_UID}
         volumes:
             - ./.docker/redis:/data
-        expose:
-            - 6379
+        ports:
+            - 6379:6379
 
     laravelapi-nginx:
         build: ./.docker/nginx
         restart: always
+        user: ${DOCKER_UID}
         ports:
-            - "80:80"
+            - 80:80
         volumes:
             - ./:/var/www
             - ./.docker/log/nginx:/var/log/nginx

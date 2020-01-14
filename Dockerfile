@@ -24,6 +24,14 @@ RUN addgroup --gid "$GID" "$USER" \
     --uid "$UID" \
     "$USER"
 
+###########################################################################
+# Set Timezone
+###########################################################################
+ARG TZ=Etc/Gmt+3
+ENV TZ ${TZ}
+      
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 WORKDIR /var/www
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
