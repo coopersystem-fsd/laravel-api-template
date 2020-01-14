@@ -39,7 +39,11 @@ services:
         build: ./.docker/nginx
         restart: always
         ports:
+<<<<<<< HEAD
             - 80:80
+=======
+            - "${DOCKER_PORT}:80"
+>>>>>>> 14e3ea86cd5bf0c14dd3f27441ddca5398d10cde
         volumes:
             - ./:/var/www
             - ./.docker/log/nginx:/var/log/nginx

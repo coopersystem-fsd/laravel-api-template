@@ -15,6 +15,18 @@ Template base para construção de APIs.
 - Docker
 - Docker Compose
 
+## Ambiente
+
+Existem algumas variáveis de ambiente que podem ser definidas:
+
+```
+DOCKER_UID=1000
+DOCKER_GID=1000
+DOCKER_PORT=80
+```
+
+Para alterar a porta onde aplicação será executada altere a variável `DOCKER_PORT`. 
+
 ## Instalação
 
 Clone o projeto e acesse a pasta:
@@ -59,3 +71,5 @@ php artisan migrate
 ## Uso
 
 A aplicação deveria estar disponível em `http://localhost`.
+
+**OBS** Se você alterou a variável de ambiente `DOCKER_PORT` a aplicação vai estar disponível em `http://localhost:PORTA`
