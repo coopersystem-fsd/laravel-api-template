@@ -17,7 +17,6 @@ services:
 
     laravelapi-postgres:
         image: postgres:12-alpine
-        user: ${DOCKER_UID}
         restart: always
         ports:
             - 5432:5432
@@ -39,7 +38,6 @@ services:
     laravelapi-nginx:
         build: ./.docker/nginx
         restart: always
-        user: ${DOCKER_UID}
         ports:
             - 80:80
         volumes:

@@ -5,7 +5,7 @@ RUN apk add --no-cache openssl bash nodejs npm postgresql-dev
 RUN docker-php-ext-install pdo pdo_pgsql
 
 ADD . /var/www
-RUN chown -R www-data:www-data /var/www
+#RUN chown -R www-data:www-data /var/www
 
 # Add a non-root user to prevent files being created with root permissions on host machine.
 ENV USER=laravel
