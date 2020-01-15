@@ -72,7 +72,7 @@ Create the database structure:
 php artisan migrate
 ```
 
-## Uso
+## Usage
 
 The application should be available in `http://localhost`.
 
