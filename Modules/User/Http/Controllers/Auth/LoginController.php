@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers\Auth;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Routing\Controller;
+use Modules\User\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -20,12 +21,13 @@ class LoginController extends Controller
     /**
      * Get a JWT via given credentials.
      *
+     * @param LoginRequest $request
      * @return \Illuminate\Http\JsonResponse
      * @throws AuthenticationException
      */
-    public function login()
+    public function login(LoginRequest $request)
     {
-        $credentials = request(['email', 'password']);
+        $credentials = $request->only('email', 'password');
 
         if (! $token = auth()->attempt($credentials)) {
             throw new AuthenticationException();
