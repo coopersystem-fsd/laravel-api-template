@@ -1,0 +1,30 @@
+{
+    "name": "coopersystem-fsd/user",
+    "description": "",
+    "authors": [
+        {
+            "name": "Coopersystem Team",
+            "email": "detin.fsd@coopersystem.com.br"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\User\\Providers\\UserServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\User\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "tymon/jwt-auth": "^1.0.0"
+    }
+}

@@ -5,7 +5,7 @@ RUN apk add --no-cache openssl bash nodejs npm postgresql-dev
 RUN docker-php-ext-install pdo pdo_pgsql
 
 ADD . /var/www
-#RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www
 
 # Add a non-root user to prevent files being created with root permissions on host machine.
 ENV USER=laravel
@@ -29,13 +29,14 @@ RUN addgroup --gid "$GID" "$USER" \
 ###########################################################################
 ARG TZ=Etc/Gmt+3
 ENV TZ ${TZ}
-      
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /var/www
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php --install-dir=/usr/bin --filename=composer
+RUN rm -rf /var/www/html
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY .docker/nginx/nginx.conf /etc/nginx/conf.d/
 

@@ -1,23 +1,23 @@
 # Laravel API Template
 
-Template base para construção de APIs.
+Template to build REST APIs.
 
 ## Features
 
 - Login (JWT)
 
-## Pacotes utilizados
+## Packages
 
 - [Laravel Modules](https://github.com/nWidart/laravel-modules)
 
-## Pre-requisitos
+## Pre-requisites
 
 - Docker
 - Docker Compose
 
-## Ambiente
+## Environment
 
-Existem algumas variáveis de ambiente que podem ser definidas:
+Exists some environment var that can be overwrite.
 
 ```
 DOCKER_UID=1000
@@ -25,44 +25,48 @@ DOCKER_GID=1000
 DOCKER_PORT=80
 ```
 
-Para alterar a porta onde aplicação será executada altere a variável `DOCKER_PORT`. 
+To change the application port change the `DOCKER_PORT` var. 
 
-## Instalação
+## Installation
 
-Clone o projeto e acesse a pasta:
+Clone the project and access the root folder:
 
 ```shell script
 git clone git@github.com:coopersystem-fsd/laravel-api-template.git myapp
 cd myapp
 ``` 
 
-Suba o ambiente utilizando o `docker-compose`:
+Up the environment with `docker-compose`:
 
 ```shell script
 docker-compose up -d
 ```
 
-Acesse o container para executar os próximos passos:
+Access the container to execute the next steps:
 
 ```shell script
 docker-compose exec --user=laravel laravelapi bash
 ```
 
-Após executar esse comando você deveria ter acesso ao `bash` dentro do container na pasta raíz do projeto.
-
-Copie o arquivo `.env.example` para `.env`:
+Copy the `.env.example` file to `.env`:
 
 ```shell script
 cp .env.example .env
 ```
 
-Gere a chave da aplicação:
+Generate the application key:
 
 ```shell script
 php artisan key:generate
 ```
 
-Crie a estrutura do banco de dados executando o seguinte comando:
+Generate too the JWT auth key:
+
+```shell script
+php artisan jwt:secret
+```
+
+Create the database structure:
 
 ```shell script
 php artisan migrate
@@ -70,6 +74,12 @@ php artisan migrate
 
 ## Uso
 
-A aplicação deveria estar disponível em `http://localhost`.
+The application should be available in `http://localhost`.
 
-**OBS** Se você alterou a variável de ambiente `DOCKER_PORT` a aplicação vai estar disponível em `http://localhost:PORTA`
+**Warning** If you change the environment var `DOCKER_PORT` the application will run according to the port. E.g.:
+ 
+```dotenv
+DOCKER_PORT=8080
+```
+ 
+Application available in `http://localhost:8080`
