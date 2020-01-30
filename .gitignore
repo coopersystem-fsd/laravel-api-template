@@ -14,6 +14,7 @@ yarn-error.log
 .docker/log
 .docker/redis
 .docker/postgres
+.docker-sync
 
 .idea
 html
